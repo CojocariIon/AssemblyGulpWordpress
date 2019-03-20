@@ -20,7 +20,7 @@ const
 
  
 /* It's principal settings in smart grid project */
-var settings = {
+let settings = {
     outputStyle: 'less', /* less || scss || sass || styl */
     columns: 12, /* number of grid columns */
     offset: '0px', /* gutter width px || % || rem */
