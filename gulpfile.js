@@ -1,18 +1,17 @@
 const 
 	{ src, dest, watch, parallel, series } 		= require('gulp'),
 	less 										= require('gulp-less'), // // модуль для компиляции Less (Less) в CSS
-	// sass 										= require('gulp-sass'), // // модуль для компиляции sass (sass) в CSS
+	// sass 									= require('gulp-sass'), // // модуль для компиляции sass (sass) в CSS
 	babel 										= require('gulp-babel'),
 	uglify 										= require('gulp-uglify'),
-    include 									= require('gulp-include'),
+    	include 									= require('gulp-include'),
 	notify 									 	= require('gulp-notify'),
 	postcss										= require('gulp-postcss'),
 	cleanCss									= require('gulp-clean-css'),
 	imagemin									= require('gulp-imagemin'),
 	smartgrid 									= require('smart-grid'),
 	groupCssMQ 									= require('gulp-group-css-media-queries'),
-	// autoprefixer								= require('autoprefixer'),
-	autoprefixer								= require('gulp-autoprefixer'), // модуль для автоматической установки автопрефиксов
+	autoprefixer									= require('gulp-autoprefixer'), // модуль для автоматической установки автопрефиксов
 	sourcemap									= require('gulp-sourcemaps'), // модуль для генерации карты исходных файлов
 	browserSync								 	= require('browser-sync'),
 	reload									 	= browserSync.reload;
