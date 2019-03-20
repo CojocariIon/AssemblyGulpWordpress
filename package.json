@@ -12,6 +12,7 @@
     "@babel/core": "*",
     "@babel/preset-env": "*",
     "autoprefixer": "*",
+    "del": "*",
     "gulp": "*",
     "gulp-autoprefixer": "*",
     "gulp-babel": "*",
