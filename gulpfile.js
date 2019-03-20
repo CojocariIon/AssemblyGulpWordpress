@@ -152,11 +152,11 @@ function task_server(done) {
 }
 
 function task_watch(done){
-	watch('project/**/*.php',     					task_php);
+    watch('project/**/*.php',     			task_php);
     watch('project/assets/less/**/*.less',      	task_less);
-    watch('project/**/*.less',   					task_less2);
-    watch('project/assets/js/**/*.js',   			task_js);
-    watch('project/assets/img/**/*.*',    			task_img);
+    watch('project/**/*.less',   			task_less2);
+    watch('project/assets/js/**/*.js',   		task_js);
+    watch('project/assets/img/**/*.*',    		task_img);
     watch('project/assets/fonts/**/*.*',      		task_fonts);
  done();
 }
