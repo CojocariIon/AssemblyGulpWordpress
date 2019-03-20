@@ -1,2 +1,2 @@
-# AssemblyGulpWordpress
+# AssemblyGulp4Wordpress
 
