@@ -24,10 +24,11 @@
     "gulp-notify": "*",
     "gulp-postcss": "*",
     "gulp-remember": "^1.0.1",
+    "gulp-rigger": "^0.5.8",
     "gulp-sass": "*",
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*",
-    "smart-grid": "*"
+    "smart-grid": "^2.1.2"
   },
   "dependencies": {
     "simplebar": "*"

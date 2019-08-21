@@ -1,6 +1,6 @@
 <?php global $trans; ?>
 <!doctype html>
-<html id="HTML" <?php language_attributes(); ?>">
+<html id="HTML" <?php language_attributes($lang); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

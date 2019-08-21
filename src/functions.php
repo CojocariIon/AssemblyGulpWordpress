@@ -1,20 +1,36 @@
 <?php
 
 /*=== Front-End ===*/
-function dcSrc()
+
+// Lang Attributes
+function __language_attributes($lang){
+
+  // ignore the supplied argument
+  $langs = array( 'en-US');
+
+  // change to whatever you want
+  $my_language = $langs[0];
+
+  // return the new attribute
+  return 'lang="'.$my_language.'"';
+}
+
+add_filter('language_attributes', '__language_attributes');
+
+function templateDirectory()
 {
     return get_template_directory_uri();
 }
 
-add_action('after_setup_theme', 'dc_theme_support');
-add_action('wp_enqueue_scripts', 'dc_front_scripts');
-add_action('admin_head', 'dc_admin_scripts');
+add_action('after_setup_theme', 'themeSupport');
+add_action('wp_enqueue_scripts', 'frontScripts');
+add_action('admin_head', 'adminScripts');
 
-add_action( 'admin_menu', 'remove_page_attribute_support', 10000000000 );
-//add_filter( 'tiny_mce_before_init', 'my_custom_styles' );
-add_editor_style(dcSrc() . "/assets/css/admin.css");
+add_action( 'admin_menu', 'removePageAttributeSupport', 10000000000 );
+//add_filter( 'tiny_mce_before_init', 'customStyles' );
+add_editor_style(templateDirectory() . "/assets/css/admin.css");
 
-function dc_theme_support()
+function themeSupport()
 {
     add_theme_support('custom-logo');
     add_theme_support('post-thumbnails');
@@ -38,25 +54,25 @@ function dc_theme_support()
     register_nav_menu( 'footer', 'Footer Menu' );
 }
 
-function dc_front_scripts()
+function frontScripts()
 {
     $time = time();
 
     //css
-    wp_enqueue_style('dc-connect-style', dcSrc() . "/style.css?v=" . $time);
+    wp_enqueue_style('dc-connect-style', templateDirectory() . "/assets/css/style.css?v=" . $time);
 
     //js
-    wp_enqueue_script('script-js', dcSrc() . "/assets/js/script.js?v=" . $time);
+    wp_enqueue_script('script-js', templateDirectory() . "/assets/js/script.js?v=" . $time);
 }
 
-function dc_admin_scripts()
+function adminScripts()
 {
-    echo '<link rel="stylesheet" href="' . dcSrc() . '/assets/css/admin.css" type="text/css" media="all" />';
-    echo '<script src="' . dcSrc() . '/assets/js/admin.js"></script>';
+    echo '<link rel="stylesheet" href="' . templateDirectory() . '/assets/css/admin.css" type="text/css" media="all" />';
+    echo '<script src="' . templateDirectory() . '/assets/js/admin.js"></script>';
 }
 
 //add custom styles to the WordPress editor
-function my_custom_styles( $init_array ) {  
+function customStyles( $init_array ) {  
  
     $style_formats = array(  
         array(  
@@ -73,7 +89,7 @@ function my_custom_styles( $init_array ) {
   
 }
 
-function remove_page_attribute_support() {
+function removePageAttributeSupport() {
     $user = wp_get_current_user();
     $role = $user->data->user_login;
 
