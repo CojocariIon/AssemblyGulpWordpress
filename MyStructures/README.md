@@ -1,2 +1,4 @@
-# AssemblyGulp4Wordpress(DEVELOPING)
-
+# MyStructures
+* npm install
+* bower install
+* gulp start
