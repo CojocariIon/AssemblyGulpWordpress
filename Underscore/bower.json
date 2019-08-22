@@ -1,0 +1,21 @@
+{
+  "name": "GULP_WP",
+  "description": "WordPress Project",
+  "main": "bower.json",
+  "authors": [
+    "CI (Cojocari Ion)"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "3.*",
+    "slick-carousel": "^1.8.1",
+    "owl.carousel": "^2.3.4"
+  },
+  "devDependencies": {}
+}
