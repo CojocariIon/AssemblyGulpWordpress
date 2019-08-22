@@ -119,9 +119,10 @@ add_action( 'widgets_init', 'intensiv_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+
 function intensiv_scripts() {
-	wp_enqueue_style( 'intensiv-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'intensiv-style', get_template_directory_uri() . '/assets/sass/style.sass', array(), '', true );
+	// wp_enqueue_style( 'intensiv-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/css/style.css');
 
 
 	wp_enqueue_script( 'intensiv-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '', true );

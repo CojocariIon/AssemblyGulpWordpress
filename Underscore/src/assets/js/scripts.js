@@ -3,6 +3,9 @@
 
 
 $(document).ready(function(){
+
+    console.log('ss')
+
   $('.owl-carousel').owlCarousel({
     loop:true,
     margin:0,

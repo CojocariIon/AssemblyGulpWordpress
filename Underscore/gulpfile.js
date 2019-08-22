@@ -53,7 +53,8 @@ smartgrid('./src/assets/sass/', settings);
 const nameFolderProject = 'intensiv';
 
 function taskPHP(){
-	return src('src/**/*.php') // minimatch
+	return src('src/**/*.php')
+		// minimatch
 		// .on('data', function(file){
 		// 	console.log({
 		// 		contents: file.contents,
@@ -68,48 +69,61 @@ function taskPHP(){
 		// 		extname: 	file.extname
 		// 	});
 		// })
-		.pipe(dest(`../${nameFolderProject}`));
+		.pipe(dest(`../themes/${nameFolderProject}`));
+}
+
+function taskMainStyle(){
+	return src('src/style.css', {base: 'src'})
+		.pipe(dest(`../themes/${nameFolderProject}`))
 }
 
 function taskSass(){
-	return src('src/layouts/**/style.sass')
+	return src('src/assets/sass/**/style.sass')
 		// .pipe(remember(taskSass))
-		.pipe(sourcemaps.init())
+		// .pipe(sourcemaps.init())
 		.pipe(sass())
-		.pipe(sourcemaps.write())
-		.pipe(dest(`../${nameFolderProject}/assets/css/`));
+		// .pipe(sourcemaps.write())
+		.pipe(dest(`../themes/${nameFolderProject}/assets/css/`));
 }
 
 function taskJS(){
 	return src('src/assets/js/**/*.js', {base: 'src'})
 		.pipe(rigger())
-		.pipe(dest(`../${nameFolderProject}`))
+		.pipe(dest(`../themes/${nameFolderProject}`))
 }
 
 function taskImg(){
 	return src('src/assets/img/**/*.*', {base: 'src'})
-		.pipe(dest(`../${nameFolderProject}`))
+		.pipe(dest(`../themes/${nameFolderProject}`))
 }
 
 function taskFonts(){
 	return src('src/assets/fonts/**/*.*', {base: 'src'})
-		.pipe(dest(`../${nameFolderProject}`))
+		.pipe(dest(`../themes/${nameFolderProject}`))
 }
 
 function taskClean(){
-	return del(`../${nameFolderProject}`, {force: true});
+	return del(`../themes/${nameFolderProject}`, {force: true});
 }
 
 function taskWatch(){
-	watch('src/**/*.php', series(taskPHP));
+	watch('src/**/*.*', series(taskPHP));
 	watch('src/assets/sass/**/*.sass', series(taskSass));
 	watch('src/assets/js/**/*.*', series(taskJS));
 	watch('src/assets/img/**/*.*', series(taskImg));
 	watch('src/assets/fonts/**/*.*', series(taskFonts));
+	watch('src/languages/*.*', series(folderLanguage));
+	watch('src/style.css', series(taskMainStyle));
+}
+
+// Underscore
+function folderLanguage(){
+	return src('src/languages/*.*')
+	.pipe(dest(`../themes/${nameFolderProject}`))
 }
 
 exports.start = series(
 	taskClean,
-	parallel(taskPHP, taskSass, taskJS, taskImg, taskFonts),
+	parallel(taskPHP, taskSass, taskJS, taskImg, taskFonts, folderLanguage, taskMainStyle),
 	taskWatch
 );
