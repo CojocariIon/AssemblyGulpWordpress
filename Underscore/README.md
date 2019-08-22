@@ -1,4 +1,4 @@
 # Underscore
-npm install
-bower install
-gulp start
+* npm install
+* bower install
+* gulp start
